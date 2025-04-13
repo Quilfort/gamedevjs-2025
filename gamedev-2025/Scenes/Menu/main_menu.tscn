@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://c4qn1qlt6ejif"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameNameLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 250.0
+offset_right = 776.0
+offset_bottom = 290.0
+text = "Game Name"
+
+[node name="StartButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 426.0
+offset_top = 350.0
+offset_right = 726.0
+offset_bottom = 425.0
+text = "Start"
+
+[node name="ExitButton" type="Button" parent="Control"]
+offset_left = 426.0
+offset_top = 500.0
+offset_right = 726.0
+offset_bottom = 575.0
+text = "Exit"
