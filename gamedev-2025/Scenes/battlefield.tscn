@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://ddsk8ae4ansxg"]
+[gd_scene load_steps=2 format=3 uid="uid://ddsk8ae4ansxg"]
+
+[ext_resource type="PackedScene" uid="uid://bpkhmw5hdmf38" path="res://Scenes/central_cube.tscn" id="1_tkkmv"]
 
 [node name="Battlefield" type="Node2D"]
+
+[node name="CentralCube" parent="." instance=ExtResource("1_tkkmv")]

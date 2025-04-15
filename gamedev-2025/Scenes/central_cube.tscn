@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpkhmw5hdmf38"]
+[gd_scene load_steps=4 format=3 uid="uid://bpkhmw5hdmf38"]
 
-[ext_resource type="Script" path="res://Scenes/central_cube.gd" id="1_igjlm"]
+[ext_resource type="Script" path="res://Scripts/central_cube.gd" id="1_igjlm"]
 [ext_resource type="Texture2D" uid="uid://cb6dxeeg0h3ks" path="res://Assets/CentralCube/central-cube.png" id="1_pd8w8"]
+[ext_resource type="PackedScene" uid="uid://cs6ufkd60opqb" path="res://Scenes/Tower/tower_basic.tscn" id="3_3ws7f"]
 
 [node name="CentralCube" type="Node2D"]
 script = ExtResource("1_igjlm")
@@ -10,3 +11,25 @@ script = ExtResource("1_igjlm")
 texture = ExtResource("1_pd8w8")
 
 [node name="NorthSide" type="Node2D" parent="Sprite2D"]
+position = Vector2(0, -25)
+
+[node name="NorthTowerBasic" parent="Sprite2D/NorthSide" instance=ExtResource("3_3ws7f")]
+position = Vector2(0, -25)
+
+[node name="EastSide" type="Node2D" parent="Sprite2D"]
+position = Vector2(25, 0)
+
+[node name="EastTowerBasic" parent="Sprite2D/EastSide" instance=ExtResource("3_3ws7f")]
+position = Vector2(25, 0)
+
+[node name="SouthSide" type="Node2D" parent="Sprite2D"]
+position = Vector2(0, 25)
+
+[node name="SouthTowerBasic" parent="Sprite2D/SouthSide" instance=ExtResource("3_3ws7f")]
+position = Vector2(0, 25)
+
+[node name="WestSide" type="Node2D" parent="Sprite2D"]
+position = Vector2(-25, 0)
+
+[node name="EastTowerBasic" parent="Sprite2D/WestSide" instance=ExtResource("3_3ws7f")]
+position = Vector2(-25, 0)
