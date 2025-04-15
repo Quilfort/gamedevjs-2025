@@ -1,7 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddsk8ae4ansxg"]
+[gd_scene load_steps=5 format=3 uid="uid://ddsk8ae4ansxg"]
 
+[ext_resource type="Script" path="res://Scenes/battlefield.gd" id="1_pgm47"]
 [ext_resource type="PackedScene" uid="uid://bpkhmw5hdmf38" path="res://Scenes/central_cube.tscn" id="1_tkkmv"]
+[ext_resource type="PackedScene" uid="uid://cfvmx5and5r7v" path="res://Scenes/Enemy/enemy_basic.tscn" id="2_12ow2"]
+
+[sub_resource type="Curve2D" id="Curve2D_y1b60"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 240, 0, 0, 0, 0, 0, 1001, 1, 0, 0, 0, 0, 1002, 78, 0, 0, 0, 0, 218, 77, 0, 0, 0, 0, 238, 62, 0, 0, 0, 0, 227, 48, 0, 0, 0, 0, 231, 30, 0, 0, 0, 0, 240, 0)
+}
+point_count = 8
 
 [node name="Battlefield" type="Node2D"]
+script = ExtResource("1_pgm47")
+enemy_scene = ExtResource("2_12ow2")
 
-[node name="CentralCube" parent="." instance=ExtResource("1_tkkmv")]
+[node name="Main" type="Node" parent="."]
+
+[node name="StartTimer" type="Timer" parent="Main"]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
+[node name="Middle" type="Node" parent="."]
+
+[node name="CentralCube" parent="Middle" instance=ExtResource("1_tkkmv")]
+scale = Vector2(0.75, 0.75)
+
+[node name="North" type="Node" parent="."]
+
+[node name="NorthSpawnTimer" type="Timer" parent="North"]
+unique_name_in_owner = true
+
+[node name="NorthSpawn" type="Path2D" parent="North"]
+unique_name_in_owner = true
+position = Vector2(20, -1)
+curve = SubResource("Curve2D_y1b60")
+
+[node name="NorthSpawnLocation" type="PathFollow2D" parent="North/NorthSpawn"]
+unique_name_in_owner = true
+position = Vector2(240, 0)
+rotation = 0.00131406
+
+[connection signal="timeout" from="Main/StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="North/NorthSpawnTimer" to="." method="_on_north_spawn_timer_timeout"]

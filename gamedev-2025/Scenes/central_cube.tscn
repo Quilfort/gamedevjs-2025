@@ -16,11 +16,17 @@ position = Vector2(0, -25)
 [node name="NorthTowerBasic" parent="Sprite2D/NorthSide" instance=ExtResource("3_3ws7f")]
 position = Vector2(0, -25)
 
+[node name="NorthMarker" type="Marker2D" parent="Sprite2D/NorthSide"]
+position = Vector2(0, -50)
+
 [node name="EastSide" type="Node2D" parent="Sprite2D"]
 position = Vector2(25, 0)
 
 [node name="EastTowerBasic" parent="Sprite2D/EastSide" instance=ExtResource("3_3ws7f")]
 position = Vector2(25, 0)
+
+[node name="EastMarker" type="Marker2D" parent="Sprite2D/EastSide"]
+position = Vector2(50, 0)
 
 [node name="SouthSide" type="Node2D" parent="Sprite2D"]
 position = Vector2(0, 25)
@@ -28,8 +34,14 @@ position = Vector2(0, 25)
 [node name="SouthTowerBasic" parent="Sprite2D/SouthSide" instance=ExtResource("3_3ws7f")]
 position = Vector2(0, 25)
 
+[node name="SouthMarker" type="Marker2D" parent="Sprite2D/SouthSide"]
+position = Vector2(0, 50)
+
 [node name="WestSide" type="Node2D" parent="Sprite2D"]
 position = Vector2(-25, 0)
 
-[node name="EastTowerBasic" parent="Sprite2D/WestSide" instance=ExtResource("3_3ws7f")]
+[node name="WestTowerBasic" parent="Sprite2D/WestSide" instance=ExtResource("3_3ws7f")]
 position = Vector2(-25, 0)
+
+[node name="WestMarker" type="Marker2D" parent="Sprite2D/WestSide"]
+position = Vector2(-50, 0)
