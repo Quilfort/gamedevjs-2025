@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfvmx5and5r7v"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy/enemy_basic.gd" id="1_2x1x7"]
+[ext_resource type="Texture2D" uid="uid://1vlh4x6y7eel" path="res://Assets/Enemy/EnemyBasic/SpriteSheet.png" id="2_gd76v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_327ik"]
+atlas = ExtResource("2_gd76v")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5t1j"]
+atlas = ExtResource("2_gd76v")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q65nf"]
+atlas = ExtResource("2_gd76v")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdtu7"]
+atlas = ExtResource("2_gd76v")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymfmp"]
+atlas = ExtResource("2_gd76v")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v2idb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_327ik")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5t1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q65nf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdtu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymfmp")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}]
+
+[node name="EnemyBasic" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_2x1x7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(33, 27)
+sprite_frames = SubResource("SpriteFrames_v2idb")
+animation = &"down"
+frame_progress = 0.323358
