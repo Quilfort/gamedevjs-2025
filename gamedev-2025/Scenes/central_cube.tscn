@@ -14,6 +14,7 @@ texture = ExtResource("1_pd8w8")
 position = Vector2(0, -25)
 
 [node name="NorthTowerBasic" parent="NorthSide" instance=ExtResource("3_3ws7f")]
+unique_name_in_owner = true
 position = Vector2(0, -25)
 
 [node name="NorthMarker" type="Marker2D" parent="NorthSide"]

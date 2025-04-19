@@ -10,10 +10,14 @@ script = ExtResource("1_m86w1")
 [node name="Base" type="Sprite2D" parent="."]
 texture = ExtResource("1_ja1oa")
 
-[node name="Turret" type="Sprite2D" parent="."]
+[node name="FOVArea" type="Area2D" parent="Base"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Base/FOVArea"]
+
+[node name="Turret" type="Sprite2D" parent="Base"]
 unique_name_in_owner = true
 texture = ExtResource("2_yqusy")
 offset = Vector2(12, 0)
 
-[node name="Muzzle" type="Marker2D" parent="Turret"]
+[node name="Muzzle" type="Marker2D" parent="Base/Turret"]
 position = Vector2(43, 0)
