@@ -98,10 +98,24 @@ func find_target(enemies: Array, marker_pos: Vector2) -> Node2D:
 func _process(delta):
 	if battlefield == null or marker == null:
 		return
-	var enemies = battlefield.active_enemies
+	var enemies = get_enemies_array()
 	var closest = find_target(enemies, marker.global_position)
 	current_target = closest
 	turn()
+
+
+func get_enemies_array():
+	if fov_area.rotation_degrees == 270.0: 		
+		return battlefield.active_enemies_north
+	
+	if fov_area.rotation_degrees == 0.0: 		
+		return battlefield.active_enemies_east
+	
+	if fov_area.rotation_degrees == 90.0: 		
+		return battlefield.active_enemies_south
+	
+	if fov_area.rotation_degrees == 180.0: 		
+		return battlefield.active_enemies_west
 
 func turn():
 	if current_target != null:

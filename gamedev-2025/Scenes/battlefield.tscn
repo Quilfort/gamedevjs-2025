@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddsk8ae4ansxg"]
+[gd_scene load_steps=8 format=3 uid="uid://ddsk8ae4ansxg"]
 
 [ext_resource type="Script" path="res://Scripts/battlefield.gd" id="1_pgm47"]
 [ext_resource type="PackedScene" uid="uid://bpkhmw5hdmf38" path="res://Scenes/central_cube.tscn" id="1_tkkmv"]
@@ -9,6 +9,24 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -6, -36, 0, 0, 0, 0, 276, -88, 0, 0, 0, 0, 390, -66, 0, 0, 0, 0, 545, -122, 0, 0, 0, 0, 983, -24)
 }
 point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_nij8p"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 59, 796, 0, 0, 0, 0, 283, 801, 0, 0, 0, 0, 424, 729, 0, 0, 0, 0, 634, 820, 0, 0, 0, 0, 901, 807, 0, 0, 0, 0, 988, 762)
+}
+point_count = 6
+
+[sub_resource type="Curve2D" id="Curve2D_0u8dg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -214, 604, 0, 0, 0, 0, -219, 490, 0, 0, 0, 0, -269, 376, 0, 0, 0, 0, -208, 257, 0, 0, 0, 0, -169, 112)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_awery"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1314, 24, 0, 0, 0, 0, 1291, 101, 0, 0, 0, 0, 1368, 212, 0, 0, 0, 0, 1313, 335, 0, 0, 0, 0, 1281, 463, 0, 0, 0, 0, 1349, 578)
+}
+point_count = 6
 
 [node name="Battlefield" type="Node2D"]
 script = ExtResource("1_pgm47")
@@ -43,5 +61,51 @@ unique_name_in_owner = true
 position = Vector2(-6, -36)
 rotation = -0.182349
 
+[node name="South" type="Node" parent="."]
+
+[node name="SouthSpawnTimer" type="Timer" parent="South"]
+unique_name_in_owner = true
+wait_time = 5.0
+
+[node name="SouthSpawn" type="Path2D" parent="South/SouthSpawnTimer"]
+unique_name_in_owner = true
+curve = SubResource("Curve2D_nij8p")
+
+[node name="SouthSpawnLocation" type="PathFollow2D" parent="South/SouthSpawnTimer/SouthSpawn"]
+unique_name_in_owner = true
+position = Vector2(59, 796)
+rotation = 0.0223177
+
+[node name="West" type="Node" parent="."]
+
+[node name="WestSpawnTimer" type="Timer" parent="West"]
+unique_name_in_owner = true
+
+[node name="WestSpawn" type="Path2D" parent="West/WestSpawnTimer"]
+unique_name_in_owner = true
+curve = SubResource("Curve2D_0u8dg")
+
+[node name="WestSpawnLocation" type="PathFollow2D" parent="West/WestSpawnTimer/WestSpawn"]
+unique_name_in_owner = true
+position = Vector2(-214, 604)
+rotation = -1.61463
+
+[node name="East" type="Node" parent="."]
+
+[node name="EastSpawnTimer" type="Timer" parent="East"]
+unique_name_in_owner = true
+
+[node name="EastSpawn" type="Path2D" parent="East/EastSpawnTimer"]
+unique_name_in_owner = true
+curve = SubResource("Curve2D_awery")
+
+[node name="EastSpawnLocation" type="PathFollow2D" parent="East/EastSpawnTimer/EastSpawn"]
+unique_name_in_owner = true
+position = Vector2(1314, 24)
+rotation = 1.86106
+
 [connection signal="timeout" from="Main/StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="North/NorthSpawnTimer" to="." method="_on_north_spawn_timer_timeout"]
+[connection signal="timeout" from="South/SouthSpawnTimer" to="." method="_on_south_spawn_timer_timeout"]
+[connection signal="timeout" from="West/WestSpawnTimer" to="." method="_on_west_spawn_timer_timeout"]
+[connection signal="timeout" from="East/EastSpawnTimer" to="." method="_on_east_spawn_timer_timeout"]
