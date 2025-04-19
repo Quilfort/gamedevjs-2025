@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ddsk8ae4ansxg"]
 
-[ext_resource type="Script" path="res://Scenes/battlefield.gd" id="1_pgm47"]
+[ext_resource type="Script" path="res://Scripts/battlefield.gd" id="1_pgm47"]
 [ext_resource type="PackedScene" uid="uid://bpkhmw5hdmf38" path="res://Scenes/central_cube.tscn" id="1_tkkmv"]
 [ext_resource type="PackedScene" uid="uid://cfvmx5and5r7v" path="res://Scenes/Enemy/enemy_basic.tscn" id="2_12ow2"]
 
@@ -31,7 +31,7 @@ scale = Vector2(0.75, 0.75)
 
 [node name="NorthSpawnTimer" type="Timer" parent="North"]
 unique_name_in_owner = true
-wait_time = 3.0
+wait_time = 5.0
 
 [node name="NorthSpawn" type="Path2D" parent="North"]
 unique_name_in_owner = true

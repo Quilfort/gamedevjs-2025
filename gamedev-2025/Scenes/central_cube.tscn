@@ -17,7 +17,7 @@ position = Vector2(0, -25)
 unique_name_in_owner = true
 position = Vector2(0, -25)
 
-[node name="NorthMarker" type="Marker2D" parent="NorthSide"]
+[node name="Marker" type="Marker2D" parent="NorthSide"]
 position = Vector2(0, -50)
 
 [node name="SouthSide" type="Node2D" parent="."]
@@ -26,7 +26,7 @@ position = Vector2(0, 25)
 [node name="SouthTowerBasic" parent="SouthSide" instance=ExtResource("3_3ws7f")]
 position = Vector2(0, 25)
 
-[node name="SouthMarker" type="Marker2D" parent="SouthSide"]
+[node name="Marker" type="Marker2D" parent="SouthSide"]
 position = Vector2(0, 50)
 
 [node name="EastSide" type="Node2D" parent="."]
@@ -35,7 +35,7 @@ position = Vector2(25, 0)
 [node name="EastTowerBasic" parent="EastSide" instance=ExtResource("3_3ws7f")]
 position = Vector2(25, 0)
 
-[node name="EastMarker" type="Marker2D" parent="EastSide"]
+[node name="Marker" type="Marker2D" parent="EastSide"]
 position = Vector2(50, 0)
 
 [node name="WestSide" type="Node2D" parent="."]
@@ -44,5 +44,5 @@ position = Vector2(-25, 0)
 [node name="WestTowerBasic" parent="WestSide" instance=ExtResource("3_3ws7f")]
 position = Vector2(-25, 0)
 
-[node name="WestMarker" type="Marker2D" parent="WestSide"]
+[node name="Marker" type="Marker2D" parent="WestSide"]
 position = Vector2(-50, 0)
