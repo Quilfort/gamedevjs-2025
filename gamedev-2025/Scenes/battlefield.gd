@@ -27,4 +27,9 @@ func _on_north_spawn_timer_timeout() -> void:
 	var enemy_location = %NorthSpawnLocation
 	enemy_location.progress_ratio = randf()
 	enemy.position = enemy_location.position
+	
+	var marker = %CentralCube/NorthSide/NorthMarker
+	enemy.target_position = marker.global_position
+	
+	
 	add_child(enemy)
