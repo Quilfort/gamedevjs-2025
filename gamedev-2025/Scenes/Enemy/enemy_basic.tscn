@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cfvmx5and5r7v"]
+[gd_scene load_steps=22 format=3 uid="uid://cfvmx5and5r7v"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/enemy_basic.gd" id="1_2x1x7"]
 [ext_resource type="Texture2D" uid="uid://1vlh4x6y7eel" path="res://Assets/Enemy/EnemyBasic/SpriteSheet.png" id="2_gd76v"]
@@ -150,6 +150,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3fpc5"]
+
 [node name="EnemyBasic" type="RigidBody2D"]
 collision_mask = 0
 gravity_scale = 0.0
@@ -162,5 +164,6 @@ animation = &"up"
 frame_progress = 0.170992
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3fpc5")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

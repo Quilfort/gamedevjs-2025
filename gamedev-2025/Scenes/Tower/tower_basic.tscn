@@ -21,3 +21,8 @@ offset = Vector2(12, 0)
 
 [node name="Muzzle" type="Marker2D" parent="Base/Turret"]
 position = Vector2(43, 0)
+
+[node name="ShooterTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="ShooterTimer" to="." method="_on_shooter_timer_timeout"]

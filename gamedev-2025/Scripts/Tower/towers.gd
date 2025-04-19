@@ -1,5 +1,14 @@
 extends Node2D
 
+
+
+# Shooting
+var bullet = preload("res://Scenes/Tower/bullet.tscn")
+var bullet_damage = 5
+@onready var shoot_timer: Timer = $ShootTimer
+
+
+
 # Enum For Directions
 enum FacingDirection { EAST, NORTH, WEST, SOUTH }
 const DIRECTION_ANGLES := {
@@ -62,7 +71,6 @@ func is_in_fov(enemy: Node2D) -> bool:
 	if distance > fov_range:
 		return false
 	
-	# Get facing vector based on rotation
 	var facing_vector = Vector2.RIGHT.rotated(fov_area.global_rotation)
 	
 	# Normalize the vector to the enemy
@@ -95,3 +103,13 @@ func _process(delta):
 func turn():
 	if current_target != null:
 		$Base/Turret.look_at(current_target.global_position)
+	shoot()
+	
+
+func shoot():
+	if current_target != null and is_instance_valid(current_target):
+		var bullet_instance = bullet.instantiate()
+		bullet_instance.global_position = $Base/Turret.global_position
+		bullet_instance.target = current_target
+		bullet_instance.damage = bullet_damage
+		get_tree().current_scene.add_child(bullet_instance)
