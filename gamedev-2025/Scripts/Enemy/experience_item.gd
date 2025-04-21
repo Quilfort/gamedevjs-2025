@@ -2,7 +2,7 @@ extends RigidBody2D
 
 @export var delay_before_homing := 1.0
 @export var speed := 200.0
-@export var bounce_strength := 100.0
+@export var exp_value := 1
 
 @onready var sprite = $AnimatedSprite2D
 @onready var timer := $Timer
@@ -29,3 +29,8 @@ func _physics_process(delta):
 		var direction = (target - global_position).normalized()
 		position += direction * speed * delta
 		rotation += 5 * delta
+		
+		# Check if it's close enough to count as collected
+		if global_position.distance_to(target) < 10:
+			GameManager.add_xp(exp_value)
+			queue_free()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddsk8ae4ansxg"]
+[gd_scene load_steps=9 format=3 uid="uid://ddsk8ae4ansxg"]
 
 [ext_resource type="Script" path="res://Scripts/battlefield.gd" id="1_pgm47"]
 [ext_resource type="PackedScene" uid="uid://bpkhmw5hdmf38" path="res://Scenes/central_cube.tscn" id="1_tkkmv"]
 [ext_resource type="PackedScene" uid="uid://cfvmx5and5r7v" path="res://Scenes/Enemy/enemy_basic.tscn" id="2_12ow2"]
+[ext_resource type="PackedScene" uid="uid://coie1aygnfdx3" path="res://Scenes/ui.tscn" id="4_l0cx7"]
 
 [sub_resource type="Curve2D" id="Curve2D_y1b60"]
 _data = {
@@ -103,6 +104,8 @@ curve = SubResource("Curve2D_awery")
 unique_name_in_owner = true
 position = Vector2(1314, 24)
 rotation = 1.86106
+
+[node name="UI" parent="." instance=ExtResource("4_l0cx7")]
 
 [connection signal="timeout" from="Main/StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="North/NorthSpawnTimer" to="." method="_on_north_spawn_timer_timeout"]

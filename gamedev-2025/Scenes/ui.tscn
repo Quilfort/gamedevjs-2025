@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://coie1aygnfdx3"]
+
+[ext_resource type="Script" path="res://Scripts/ui.gd" id="1_c50vv"]
+[ext_resource type="Texture2D" uid="uid://dqpa67x5u3d34" path="res://Assets/Experience/bar_round_gloss_large.svg" id="1_gut2c"]
+[ext_resource type="Texture2D" uid="uid://bfm5orwfbw24p" path="res://Assets/Experience/bar_shadow_round_large.svg" id="2_cwb5u"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c50vv")
+
+[node name="ProgressBar" type="Node" parent="."]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="ProgressBar"]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -80.0
+offset_right = 50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 50.0
+texture_under = ExtResource("2_cwb5u")
+texture_progress = ExtResource("1_gut2c")
