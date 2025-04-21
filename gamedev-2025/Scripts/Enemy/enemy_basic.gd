@@ -1,5 +1,8 @@
 extends RigidBody2D
 
+@export var exp_scene: PackedScene
+@export var exp_amount := 1
+
 #Movement
 @export var movement_speed = 10.0
 var target_position: Vector2
@@ -31,6 +34,14 @@ func update_animation(direction: Vector2):
 			sprite.play("right")
 		else:
 			sprite.play("left")
+
+func die():
+	for i in exp_amount:
+		var exp_item = exp_scene.instantiate()
+		exp_item.global_position = global_position
+		get_parent().add_child(exp_item)
+
+	queue_free()
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():

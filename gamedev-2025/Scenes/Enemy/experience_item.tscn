@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://b0mxnhd0y1f"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy/experience_item.gd" id="1_i3kxe"]
+[ext_resource type="Texture2D" uid="uid://c61cnhbifa31h" path="res://Assets/Experience/experience_basic.png" id="2_sprxb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oak0l"]
+atlas = ExtResource("2_sprxb")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fclj5"]
+atlas = ExtResource("2_sprxb")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crm55"]
+atlas = ExtResource("2_sprxb")
+region = Rect2(20, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xv6kw"]
+atlas = ExtResource("2_sprxb")
+region = Rect2(30, 0, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u12xr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oak0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fclj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crm55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xv6kw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ExperienceItem" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_i3kxe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_u12xr")
+frame_progress = 0.335489
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
