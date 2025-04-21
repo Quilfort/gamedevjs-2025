@@ -1,7 +1,13 @@
 extends RigidBody2D
 
+# EXP
 @export var exp_scene: PackedScene
 @export var exp_amount := 1
+
+#Health
+@export var max_health := 2
+@onready var health_bar = %HealthBar
+var current_health := max_health
 
 #Movement
 @export var movement_speed = 10.0
@@ -9,6 +15,14 @@ var target_position: Vector2
 
 #Animation
 @onready var sprite = $AnimatedSprite2D
+
+func _ready():
+	set_health()
+
+func set_health():
+	current_health = max_health
+	health_bar.max_value = max_health
+	health_bar.value = current_health
 
 #Movement
 func _physics_process(delta):
@@ -34,6 +48,12 @@ func update_animation(direction: Vector2):
 			sprite.play("right")
 		else:
 			sprite.play("left")
+
+func hit(damage: int):
+	current_health -= damage
+	health_bar.value = current_health
+	if current_health <= 0:
+		die()
 
 func die():
 	for i in exp_amount:

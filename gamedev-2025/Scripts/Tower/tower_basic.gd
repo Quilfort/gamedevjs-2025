@@ -2,11 +2,9 @@
 
 extends Node2D
 
-
-
 # Shooting
 var bullet = preload("res://Scenes/Tower/bullet.tscn")
-var bullet_damage = 5
+var bullet_damage = 0
 @onready var shoot_timer: Timer = $ShooterTimer
 
 
@@ -67,19 +65,13 @@ func generate_fov_shape():
 func is_in_fov(enemy: Node2D) -> bool:
 	var fov_origin = $Base/FOVArea.global_position
 	var to_enemy = enemy.global_position - fov_origin
-	
-	# Debug distance
 	var distance = to_enemy.length()
 	
 	if distance > fov_range:
 		return false
 	
 	var facing_vector = Vector2.RIGHT.rotated(fov_area.global_rotation)
-	
-	# Normalize the vector to the enemy
 	var to_enemy_normalized = to_enemy.normalized()
-	
-	# Calculate angle (make sure we're using the right method)
 	var angle_to_enemy = facing_vector.angle_to(to_enemy_normalized)
 	
 	return abs(rad_to_deg(angle_to_enemy)) <= fov_angle / 2.0
@@ -117,6 +109,19 @@ func get_enemies_array():
 	if fov_area.rotation_degrees == 180.0: 		
 		return battlefield.active_enemies_west
 
+func set_tower_damage():
+	if fov_area.rotation_degrees == 270.0: 		
+		return GameManager.tower_attack_north
+	
+	if fov_area.rotation_degrees == 0.0: 		
+		return GameManager.tower_attack_east
+	
+	if fov_area.rotation_degrees == 90.0: 		
+		return GameManager.tower_attack_south
+	
+	if fov_area.rotation_degrees == 180.0: 		
+		return GameManager.tower_attack_west
+
 func turn():
 	if current_target != null:
 		$Base/Turret.look_at(current_target.global_position)
@@ -126,6 +131,7 @@ func _on_ShootTimer_timeout():
 		shoot()
 		
 func shoot():
+	bullet_damage = set_tower_damage()
 	if current_target != null and is_instance_valid(current_target):
 		var bullet_instance = bullet.instantiate()
 		bullet_instance.global_position = $Base/Turret.global_position

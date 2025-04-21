@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed: float = 400.0
-@export var damage: int = 5
+@export var damage: int = 1
 
 var target: Node2D = null
 
@@ -16,10 +16,8 @@ func _physics_process(delta):
 		var collision = move_and_collide(velocity * delta)
 		if collision:
 			var body = collision.get_collider()
-			if body.has_method("die"):
-				body.die()
-			#if body.is_in_group("enemies") or (body.get_script() and body.get_script().resource_path.ends_with("enemy_basic.gd")):
-				#body.queue_free()
+			if body.has_method("hit"):
+				body.hit(damage)
 				queue_free()
 	else:
 		queue_free()

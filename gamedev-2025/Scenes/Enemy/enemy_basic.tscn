@@ -1,8 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://cfvmx5and5r7v"]
+[gd_scene load_steps=25 format=3 uid="uid://cfvmx5and5r7v"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/enemy_basic.gd" id="1_2x1x7"]
 [ext_resource type="Texture2D" uid="uid://1vlh4x6y7eel" path="res://Assets/Enemy/EnemyBasic/SpriteSheet.png" id="2_gd76v"]
 [ext_resource type="PackedScene" uid="uid://b0mxnhd0y1f" path="res://Scenes/Enemy/experience_item.tscn" id="3_tv5hi"]
+[ext_resource type="Texture2D" uid="uid://droxlnb6v131t" path="res://Assets/Enemy/bar_shadow_round_small.svg" id="4_o4ru4"]
+[ext_resource type="Texture2D" uid="uid://bnshg2ualacwb" path="res://Assets/Enemy/bar_round_gloss_small.svg" id="5_28eto"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_327ik"]
 atlas = ExtResource("2_gd76v")
@@ -169,3 +171,14 @@ frame_progress = 0.170992
 shape = SubResource("RectangleShape2D_3fpc5")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -10.0
+offset_top = 10.0
+offset_right = 86.0
+offset_bottom = 26.0
+scale = Vector2(0.21, 0.21)
+value = 100.0
+texture_under = ExtResource("4_o4ru4")
+texture_progress = ExtResource("5_28eto")
