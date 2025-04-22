@@ -25,7 +25,7 @@ func set_health():
 	health_bar.value = current_health
 
 #Movement
-func _physics_process(delta):
+func _physics_process(_delta):
 	if target_position != null:
 		var direction = (target_position - global_position).normalized()
 		linear_velocity = direction * movement_speed

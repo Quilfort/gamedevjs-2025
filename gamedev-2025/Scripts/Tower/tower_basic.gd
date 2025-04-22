@@ -87,7 +87,7 @@ func find_target(enemies: Array, marker_pos: Vector2) -> Node2D:
 	candidates.sort_custom(func(a, b): return a.global_position.distance_to(marker_pos) < b.global_position.distance_to(marker_pos))
 	return candidates[0]
 
-func _process(delta):
+func _process(_delta):
 	if battlefield == null or marker == null:
 		return
 	var enemies = get_enemies_array()

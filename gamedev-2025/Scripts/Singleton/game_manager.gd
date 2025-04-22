@@ -3,7 +3,7 @@ extends Node
 # Experience
 signal exp_updated(current_exp, exp_to_next)
 var current_level := 1
-var current_exp := 0
+var current_exp := 0.0
 var exp_to_next_level := 5.0
 var exp_growth_factor := 1.3
 
@@ -27,7 +27,7 @@ func _add_upgrade_menu():
 func add_xp(amount: int):
 	current_exp += amount
 	emit_signal("exp_updated", current_exp, exp_to_next_level)
-	print("Gained EXP: %d / %d" % [current_exp, exp_to_next_level])
+	print("Gained EXP: %d / %.1f" % [current_exp, exp_to_next_level])
 	
 	while current_exp >= exp_to_next_level:
 		current_exp -= exp_to_next_level
