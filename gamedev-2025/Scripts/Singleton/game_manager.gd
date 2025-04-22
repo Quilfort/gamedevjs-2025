@@ -13,6 +13,12 @@ var tower_attack_east:int  = 1
 var tower_attack_south:int  = 1
 var tower_attack_west:int = 1
 
+# Attack speed (lower = faster shooting)
+var tower_attack_speed_north := 1.0
+var tower_attack_speed_east := 1.0
+var tower_attack_speed_south := 1.0
+var tower_attack_speed_west := 1.0
+
 # Upgrade UI
 var upgrade_menu = null
 

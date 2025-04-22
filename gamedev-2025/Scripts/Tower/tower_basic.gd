@@ -2,12 +2,13 @@
 
 extends Node2D
 
+#Speed
+var last_known_speed := -1.0
+
 # Shooting
 var bullet = preload("res://Scenes/Tower/bullet.tscn")
 var bullet_damage = 0
 @onready var shoot_timer: Timer = $ShooterTimer
-
-
 
 # Enum For Directions
 enum FacingDirection { EAST, NORTH, WEST, SOUTH }
@@ -41,6 +42,8 @@ func _ready() -> void:
 	update_facing()
 	generate_fov_shape()
 	shoot_timer.timeout.connect(_on_ShootTimer_timeout)
+	shoot_timer.wait_time = get_attack_speed_for_direction()
+	last_known_speed = shoot_timer.wait_time
 
 ## Update POV
 func update_facing() -> void:
@@ -94,33 +97,7 @@ func _process(_delta):
 	var closest = find_target(enemies, marker.global_position)
 	current_target = closest
 	turn()
-
-
-func get_enemies_array():
-	if fov_area.rotation_degrees == 270.0: 		
-		return battlefield.active_enemies_north
-	
-	if fov_area.rotation_degrees == 0.0: 		
-		return battlefield.active_enemies_east
-	
-	if fov_area.rotation_degrees == 90.0: 		
-		return battlefield.active_enemies_south
-	
-	if fov_area.rotation_degrees == 180.0: 		
-		return battlefield.active_enemies_west
-
-func set_tower_damage():
-	if fov_area.rotation_degrees == 270.0: 		
-		return GameManager.tower_attack_north
-	
-	if fov_area.rotation_degrees == 0.0: 		
-		return GameManager.tower_attack_east
-	
-	if fov_area.rotation_degrees == 90.0: 		
-		return GameManager.tower_attack_south
-	
-	if fov_area.rotation_degrees == 180.0: 		
-		return GameManager.tower_attack_west
+	update_attack_speed_if_needed()
 
 func turn():
 	if current_target != null:
@@ -138,3 +115,44 @@ func shoot():
 		bullet_instance.target = current_target
 		bullet_instance.damage = bullet_damage
 		get_tree().current_scene.add_child(bullet_instance)
+
+func update_attack_speed_if_needed():
+	var current_speed := get_attack_speed_for_direction()
+	if current_speed != last_known_speed:
+		shoot_timer.wait_time = current_speed
+		last_known_speed = current_speed
+
+func get_enemies_array():
+	match fov_area.rotation_degrees:
+		270.0:
+			return battlefield.active_enemies_north
+		0.0:
+			return battlefield.active_enemies_east
+		90.0:
+			return battlefield.active_enemies_south
+		180.0:
+			return battlefield.active_enemies_west
+
+func set_tower_damage():
+	match fov_area.rotation_degrees:
+		270.0:
+			return GameManager.tower_attack_north
+		0.0:
+			return GameManager.tower_attack_east
+		90.0:
+			return GameManager.tower_attack_south
+		180.0:
+			return GameManager.tower_attack_west
+
+func get_attack_speed_for_direction() -> float:
+	match fov_area.rotation_degrees:
+		270.0:
+			return GameManager.tower_attack_speed_north
+		0.0:
+			return GameManager.tower_attack_speed_east
+		90.0:
+			return GameManager.tower_attack_speed_south
+		180.0:
+			return GameManager.tower_attack_speed_west
+		_:
+			return 1.0
