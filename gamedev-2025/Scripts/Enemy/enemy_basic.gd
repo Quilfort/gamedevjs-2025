@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+signal reached_goal
+
 # EXP
 @export var exp_scene: PackedScene
 @export var exp_amount := 1
@@ -24,12 +26,18 @@ func set_health():
 	health_bar.max_value = max_health
 	health_bar.value = current_health
 
-#Movement
+# Movement
 func _physics_process(_delta):
 	if target_position != null:
 		var direction = (target_position - global_position).normalized()
 		linear_velocity = direction * movement_speed
 		update_animation(direction)
+
+		# Check if reached target
+		if global_position.distance_to(target_position) < 10:
+			linear_velocity = Vector2.ZERO
+			emit_signal("reached_goal")
+			queue_free()
 
 #Animation
 func update_animation(direction: Vector2):

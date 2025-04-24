@@ -4,7 +4,7 @@ extends Node
 signal exp_updated(current_exp, exp_to_next)
 var current_level := 1
 var current_exp := 0.0
-var exp_to_next_level := 1.0
+var exp_to_next_level := 10.0
 var exp_growth_factor := 1.3
 
 #Tower Attack

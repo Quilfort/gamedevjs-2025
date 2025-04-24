@@ -42,6 +42,7 @@ func _on_north_spawn_timer_timeout() -> void:
 	var marker = %CentralCube/NorthSide/Marker
 	enemy.target_position = marker.global_position
 	
+	enemy.connect("reached_goal", Callable(self, "_on_enemy_reached_goal"))
 	add_child(enemy)
 	active_enemies_north.append(enemy)
 	enemy.connect("tree_exited", Callable(self, "_on_enemy_exited").bind(enemy))
@@ -56,6 +57,7 @@ func _on_south_spawn_timer_timeout() -> void:
 	var marker = %CentralCube/SouthSide/Marker
 	enemy.target_position = marker.global_position
 	
+	enemy.connect("reached_goal", Callable(self, "_on_enemy_reached_goal"))
 	add_child(enemy)
 	active_enemies_south.append(enemy)
 	enemy.connect("tree_exited", Callable(self, "_on_enemy_exited").bind(enemy))
@@ -70,6 +72,7 @@ func _on_west_spawn_timer_timeout() -> void:
 	var marker = %CentralCube/WestSide/Marker
 	enemy.target_position = marker.global_position
 	
+	enemy.connect("reached_goal", Callable(self, "_on_enemy_reached_goal"))
 	add_child(enemy)
 	active_enemies_west.append(enemy)
 	enemy.connect("tree_exited", Callable(self, "_on_enemy_exited").bind(enemy))
@@ -84,10 +87,10 @@ func _on_east_spawn_timer_timeout() -> void:
 	var marker = %CentralCube/EastSide/Marker
 	enemy.target_position = marker.global_position
 	
+	enemy.connect("reached_goal", Callable(self, "_on_enemy_reached_goal"))
 	add_child(enemy)
 	active_enemies_east.append(enemy)
 	enemy.connect("tree_exited", Callable(self, "_on_enemy_exited").bind(enemy))
-
 
 func _on_enemy_exited(enemy):
 	active_enemies_north.erase(enemy)
@@ -103,3 +106,16 @@ func set_spawn_timers():
 	%SouthSpawnTimer.wait_time = GameManager.enemy_spawn_speed_south
 	%EastSpawnTimer.wait_time = GameManager.enemy_spawn_speed_east
 	%WestSpawnTimer.wait_time = GameManager.enemy_spawn_speed_west
+
+func _on_enemy_reached_goal():
+	%NorthSpawnTimer.stop()
+	%SouthSpawnTimer.stop()
+	%EastSpawnTimer.stop()
+	%WestSpawnTimer.stop()
+
+	for group in [active_enemies_north, active_enemies_south, active_enemies_east, active_enemies_west]:
+		for e in group:
+			if is_instance_valid(e):
+				e.queue_free()
+
+	get_tree().change_scene_to_file("res://Scenes/Menu/restart_menu.tscn")
