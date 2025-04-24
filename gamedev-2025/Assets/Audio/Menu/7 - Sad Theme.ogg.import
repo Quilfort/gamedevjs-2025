@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b6wqhx2sc24q4"
+path="res://.godot/imported/7 - Sad Theme.ogg-3b76e81ec72bd0532c746f44bcac843b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Menu/7 - Sad Theme.ogg"
+dest_files=["res://.godot/imported/7 - Sad Theme.ogg-3b76e81ec72bd0532c746f44bcac843b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

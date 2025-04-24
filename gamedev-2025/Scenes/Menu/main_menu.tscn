@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4qn1qlt6ejif"]
+[gd_scene load_steps=5 format=3 uid="uid://c4qn1qlt6ejif"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/main_menu.gd" id="1_kjnjn"]
+[ext_resource type="AudioStream" uid="uid://cyscqnmdumg56" path="res://Assets/Audio/Menu/Accept5.wav" id="2_dh5ra"]
+[ext_resource type="AudioStream" uid="uid://bjb46h286fl4r" path="res://Assets/Audio/Menu/Cancel2.wav" id="3_8kwf0"]
+[ext_resource type="AudioStream" uid="uid://2tu10y6e7i6p" path="res://Assets/Audio/Menu/21 - Dungeon.ogg" id="4_bkn8n"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_kjnjn")
@@ -34,6 +37,18 @@ offset_top = 500.0
 offset_right = 726.0
 offset_bottom = 575.0
 text = "Exit"
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="AcceptSFX" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("2_dh5ra")
+
+[node name="ExitSFX" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("3_8kwf0")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_bkn8n")
+volume_db = -20.0
 
 [connection signal="pressed" from="Control/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Control/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -56,6 +56,7 @@ func pause_game_for_upgrade():
 
 func add_xp(amount: int):
 	current_exp += amount
+	play_power_up_sound()
 	emit_signal("exp_updated", current_exp, exp_to_next_level)
 	print("Gained EXP: %d / %.1f" % [current_exp, exp_to_next_level])
 	
@@ -107,6 +108,15 @@ func get_weighted_direction() -> String:
 	
 	#Fallback
 	return "north"
+
+func play_power_up_sound():
+	var player = AudioStreamPlayer.new()
+	player.stream = load("res://Assets/Audio/Experience/PowerUp1.wav")
+	player.bus = "Master" # or "SFX", whatever your audio setup is
+	get_tree().root.add_child(player) # Add to scene tree so it plays
+	player.play()
+	await get_tree().create_timer(player.stream.get_length()).timeout
+	player.queue_free()
 
 
 func reset_game_values():
