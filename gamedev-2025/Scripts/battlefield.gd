@@ -26,6 +26,7 @@ func new_game():
 
 
 func _on_start_timer_timeout() -> void:
+	set_spawn_timers()
 	%NorthSpawnTimer.start()
 	%SouthSpawnTimer.start()
 	%EastSpawnTimer.start()
@@ -93,3 +94,12 @@ func _on_enemy_exited(enemy):
 	active_enemies_east.erase(enemy)
 	active_enemies_south.erase(enemy)
 	active_enemies_west.erase(enemy)
+
+func update_enemy_spawn_timers():
+	set_spawn_timers()
+
+func set_spawn_timers():
+	%NorthSpawnTimer.wait_time = GameManager.enemy_spawn_speed_north
+	%SouthSpawnTimer.wait_time = GameManager.enemy_spawn_speed_south
+	%EastSpawnTimer.wait_time = GameManager.enemy_spawn_speed_east
+	%WestSpawnTimer.wait_time = GameManager.enemy_spawn_speed_west
