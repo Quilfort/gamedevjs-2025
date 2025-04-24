@@ -51,3 +51,20 @@ func pause_game_for_upgrade():
 	if upgrade_menu:
 		upgrade_menu.refresh_options()
 		upgrade_menu.visible = true
+
+func reset_game_values():
+	# Experience
+	current_level = 1
+	current_exp = 0.0
+	exp_to_next_level = 5.0
+	exp_growth_factor = 1.3
+	#Tower Attack
+	tower_attack_north = 1
+	tower_attack_east  = 1
+	tower_attack_south  = 1
+	tower_attack_west = 1
+	# Attack speed (lower = faster shooting)
+	tower_attack_speed_north = 1.0	
+	tower_attack_speed_east = 1.0
+	tower_attack_speed_south = 1.0
+	tower_attack_speed_west = 1.0
