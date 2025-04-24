@@ -2,6 +2,9 @@
 
 extends Node2D
 
+#Shoot
+@onready var shoot_sfx: AudioStreamPlayer = $Audio/ShootSFX
+
 #Speed
 var last_known_speed := -1.0
 
@@ -114,6 +117,7 @@ func shoot():
 		bullet_instance.global_position = $Base/Turret.global_position
 		bullet_instance.target = current_target
 		bullet_instance.damage = bullet_damage
+		shoot_sfx.play()
 		get_tree().current_scene.add_child(bullet_instance)
 
 func update_attack_speed_if_needed():

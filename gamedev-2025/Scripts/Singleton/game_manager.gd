@@ -113,6 +113,7 @@ func play_power_up_sound():
 	var player = AudioStreamPlayer.new()
 	player.stream = load("res://Assets/Audio/Experience/PowerUp1.wav")
 	player.bus = "Master" # or "SFX", whatever your audio setup is
+	player.volume_db = -10.0
 	get_tree().root.add_child(player) # Add to scene tree so it plays
 	player.play()
 	await get_tree().create_timer(player.stream.get_length()).timeout

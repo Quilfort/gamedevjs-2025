@@ -64,10 +64,10 @@ func apply_upgrade(direction: String, upgrade_type: String) -> void:
 	match upgrade_type:
 		"attack":
 			match direction:
-				"north": GameManager.tower_attack_north += 1
-				"east": GameManager.tower_attack_east += 1
-				"south": GameManager.tower_attack_south += 1
-				"west": GameManager.tower_attack_west += 1
+				"north": GameManager.tower_attack_north += 0.5
+				"east": GameManager.tower_attack_east += 0.5
+				"south": GameManager.tower_attack_south += 0.5
+				"west": GameManager.tower_attack_west += 0.5
 		"speed":
 			match direction:
 				"north": GameManager.tower_attack_speed_north = apply_speed_upgrade(GameManager.tower_attack_speed_north)

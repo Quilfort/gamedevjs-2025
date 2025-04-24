@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var background_music: AudioStreamPlayer = $Audio/BackgroundMusic
 @export var enemy_scene: PackedScene
 
 var active_enemies_north: Array = []
