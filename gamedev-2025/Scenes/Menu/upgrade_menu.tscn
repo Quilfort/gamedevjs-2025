@@ -79,9 +79,6 @@ grow_vertical = 2
 text = "WEST"
 
 [connection signal="pressed" from="UpgradePowerNorth" to="." method="_on_upgrade_power_north_pressed"]
-[connection signal="pressed" from="UpgradePowerEast" to="." method="_on_upgrade_power_north_pressed"]
 [connection signal="pressed" from="UpgradePowerEast" to="." method="_on_upgrade_power_east_pressed"]
-[connection signal="pressed" from="UpgradePowerSouth" to="." method="_on_upgrade_power_north_pressed"]
 [connection signal="pressed" from="UpgradePowerSouth" to="." method="_on_upgrade_power_south_pressed"]
-[connection signal="pressed" from="UpgradePowerWest" to="." method="_on_upgrade_power_north_pressed"]
 [connection signal="pressed" from="UpgradePowerWest" to="." method="_on_upgrade_power_west_pressed"]

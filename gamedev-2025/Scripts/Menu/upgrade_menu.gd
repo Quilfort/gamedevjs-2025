@@ -56,6 +56,7 @@ func _on_upgrade_power_south_pressed() -> void:
 	finish_upgrade()
 
 func _on_upgrade_power_west_pressed() -> void:
+	print(option_west)
 	apply_upgrade("west", option_west)
 	finish_upgrade()
 
