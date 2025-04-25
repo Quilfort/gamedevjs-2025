@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddsk8ae4ansxg"]
+[gd_scene load_steps=13 format=3 uid="uid://ddsk8ae4ansxg"]
 
 [ext_resource type="Script" path="res://Scripts/battlefield.gd" id="1_pgm47"]
 [ext_resource type="PackedScene" uid="uid://bpkhmw5hdmf38" path="res://Scenes/central_cube.tscn" id="1_tkkmv"]
 [ext_resource type="PackedScene" uid="uid://cfvmx5and5r7v" path="res://Scenes/Enemy/enemy_basic.tscn" id="2_12ow2"]
+[ext_resource type="PackedScene" uid="uid://c47p5m7yo1k87" path="res://Scenes/Enemy/enemy_speed.tscn" id="3_nqpd0"]
 [ext_resource type="PackedScene" uid="uid://ws51o2u8v4g4" path="res://Scenes/Tiles/tile_map.tscn" id="3_uxf0t"]
 [ext_resource type="PackedScene" uid="uid://coie1aygnfdx3" path="res://Scenes/ui.tscn" id="4_l0cx7"]
+[ext_resource type="PackedScene" uid="uid://c03464lxoh4hp" path="res://Scenes/Enemy/enemy_strong.tscn" id="4_nrcd4"]
 [ext_resource type="AudioStream" uid="uid://dw31o0e48joux" path="res://Assets/Audio/Battlefield/17 - Fight.ogg" id="6_6pkog"]
 
 [sub_resource type="Curve2D" id="Curve2D_y1b60"]
@@ -34,6 +36,8 @@ point_count = 6
 [node name="Battlefield" type="Node2D"]
 script = ExtResource("1_pgm47")
 enemy_scene = ExtResource("2_12ow2")
+enemy_speed_scene = ExtResource("3_nqpd0")
+enemy_speed_strong = ExtResource("4_nrcd4")
 
 [node name="TileMapLayer" parent="." instance=ExtResource("3_uxf0t")]
 

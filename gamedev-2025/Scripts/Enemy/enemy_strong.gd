@@ -7,12 +7,12 @@ signal reached_goal
 @export var exp_amount := 1
 
 #Health
-@export var max_health := 2
+@export var max_health := 6
 @onready var health_bar = %HealthBar
 var current_health := max_health
 
 #Movement
-@export var movement_speed = 20.0
+@export var movement_speed = 10.0
 var target_position: Vector2
 
 #Animation

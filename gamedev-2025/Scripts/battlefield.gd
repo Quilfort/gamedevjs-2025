@@ -6,6 +6,8 @@ extends Node2D
 
 #Enemy Instances
 @export var enemy_scene: PackedScene
+@export var enemy_speed_scene: PackedScene
+@export var enemy_speed_strong: PackedScene
 
 #GameTimer
 @onready var game_timer_label: RichTextLabel = $GameTimer/GameTimerLabel
@@ -45,63 +47,87 @@ func _on_start_timer_timeout() -> void:
 
 
 func _on_north_spawn_timer_timeout() -> void:
-	var enemy = enemy_scene.instantiate()
+	var enemy_to_spawn = choose_enemy()
 	var enemy_location = %NorthSpawnLocation
 	enemy_location.progress_ratio = randf()
-	enemy.position = enemy_location.position
-	
+	enemy_to_spawn.position = enemy_location.position
+
 	var marker = %CentralCube/NorthSide/Marker
-	enemy.target_position = marker.global_position
-	
-	enemy.connect("reached_goal", Callable(self, "_on_enemy_reached_goal"))
-	add_child(enemy)
-	active_enemies_north.append(enemy)
-	enemy.connect("tree_exited", Callable(self, "_on_enemy_exited").bind(enemy))
+	enemy_to_spawn.target_position = marker.global_position
+
+	enemy_to_spawn.connect("reached_goal", Callable(self, "_on_enemy_reached_goal"))
+	add_child(enemy_to_spawn)
+	active_enemies_north.append(enemy_to_spawn)
+	enemy_to_spawn.connect("tree_exited", Callable(self, "_on_enemy_exited").bind(enemy_to_spawn))
 
 
 func _on_south_spawn_timer_timeout() -> void:
-	var enemy = enemy_scene.instantiate()
+	var enemy_to_spawn = choose_enemy()
 	var enemy_location = %SouthSpawnLocation
 	enemy_location.progress_ratio = randf()
-	enemy.position = enemy_location.position
-	
-	var marker = %CentralCube/SouthSide/Marker
-	enemy.target_position = marker.global_position
-	
-	enemy.connect("reached_goal", Callable(self, "_on_enemy_reached_goal"))
-	add_child(enemy)
-	active_enemies_south.append(enemy)
-	enemy.connect("tree_exited", Callable(self, "_on_enemy_exited").bind(enemy))
+	enemy_to_spawn.position = enemy_location.position
 
-	
+	var marker = %CentralCube/SouthSide/Marker
+	enemy_to_spawn.target_position = marker.global_position
+
+	enemy_to_spawn.connect("reached_goal", Callable(self, "_on_enemy_reached_goal"))
+	add_child(enemy_to_spawn)
+	active_enemies_south.append(enemy_to_spawn)
+	enemy_to_spawn.connect("tree_exited", Callable(self, "_on_enemy_exited").bind(enemy_to_spawn))
+
+
 func _on_west_spawn_timer_timeout() -> void:
-	var enemy = enemy_scene.instantiate()
+	var enemy_to_spawn = choose_enemy()
 	var enemy_location = %WestSpawnLocation
 	enemy_location.progress_ratio = randf()
-	enemy.position = enemy_location.position
-	
+	enemy_to_spawn.position = enemy_location.position
+
 	var marker = %CentralCube/WestSide/Marker
-	enemy.target_position = marker.global_position
-	
-	enemy.connect("reached_goal", Callable(self, "_on_enemy_reached_goal"))
-	add_child(enemy)
-	active_enemies_west.append(enemy)
-	enemy.connect("tree_exited", Callable(self, "_on_enemy_exited").bind(enemy))
+	enemy_to_spawn.target_position = marker.global_position
+
+	enemy_to_spawn.connect("reached_goal", Callable(self, "_on_enemy_reached_goal"))
+	add_child(enemy_to_spawn)
+	active_enemies_west.append(enemy_to_spawn)
+	enemy_to_spawn.connect("tree_exited", Callable(self, "_on_enemy_exited").bind(enemy_to_spawn))
 
 
 func _on_east_spawn_timer_timeout() -> void:
-	var enemy = enemy_scene.instantiate()
+	var enemy_to_spawn = choose_enemy()
 	var enemy_location = %EastSpawnLocation
 	enemy_location.progress_ratio = randf()
-	enemy.position = enemy_location.position
-	
+	enemy_to_spawn.position = enemy_location.position
+
 	var marker = %CentralCube/EastSide/Marker
-	enemy.target_position = marker.global_position
-	
-	enemy.connect("reached_goal", Callable(self, "_on_enemy_reached_goal"))
-	add_child(enemy)
-	active_enemies_east.append(enemy)
-	enemy.connect("tree_exited", Callable(self, "_on_enemy_exited").bind(enemy))
+	enemy_to_spawn.target_position = marker.global_position
+
+	enemy_to_spawn.connect("reached_goal", Callable(self, "_on_enemy_reached_goal"))
+	add_child(enemy_to_spawn)
+	active_enemies_east.append(enemy_to_spawn)
+	enemy_to_spawn.connect("tree_exited", Callable(self, "_on_enemy_exited").bind(enemy_to_spawn))
+
+
+func choose_enemy() -> Node2D:
+	var time = GameManager.get_elapsed_time()
+
+	if time < 60:
+		# Early: Only basic enemies
+		return enemy_scene.instantiate()
+	elif time < 120:
+		# Mid: 50% normal, 50% speed
+		if randf() < 0.5:
+			return enemy_speed_scene.instantiate()
+		else:
+			return enemy_scene.instantiate()
+	else:
+		# Late: 30% normal, 40% speed, 30% strong
+		var roll = randf()
+		if roll < 0.3:
+			return enemy_scene.instantiate()
+		elif roll < 0.7:
+			return enemy_speed_scene.instantiate()
+		else:
+			return enemy_speed_strong.instantiate()
+
 
 func _on_enemy_exited(enemy):
 	active_enemies_north.erase(enemy)

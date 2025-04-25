@@ -12,7 +12,7 @@ signal reached_goal
 var current_health := max_health
 
 #Movement
-@export var movement_speed = 20.0
+@export var movement_speed = 40.0
 var target_position: Vector2
 
 #Animation
