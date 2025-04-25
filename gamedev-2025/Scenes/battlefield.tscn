@@ -120,6 +120,19 @@ stream = ExtResource("6_6pkog")
 volume_db = -25.0
 autoplay = true
 
+[node name="GameTimer" type="Node" parent="."]
+
+[node name="GameTimerLabel" type="RichTextLabel" parent="GameTimer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 20.0
+offset_right = 100.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "GameTimer"
+
 [connection signal="timeout" from="Main/StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="North/NorthSpawnTimer" to="." method="_on_north_spawn_timer_timeout"]
 [connection signal="timeout" from="South/SouthSpawnTimer" to="." method="_on_south_spawn_timer_timeout"]

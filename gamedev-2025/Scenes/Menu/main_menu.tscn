@@ -48,7 +48,7 @@ stream = ExtResource("3_8kwf0")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("4_bkn8n")
-volume_db = -20.0
+volume_db = -15.0
 
 [connection signal="pressed" from="Control/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Control/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -1,20 +1,28 @@
 extends Node2D
 
+
+#Audio
 @onready var background_music: AudioStreamPlayer = $Audio/BackgroundMusic
+
+#Enemy Instances
 @export var enemy_scene: PackedScene
+
+#GameTimer
+@onready var game_timer_label: RichTextLabel = $GameTimer/GameTimerLabel
+
 
 var active_enemies_north: Array = []
 var active_enemies_east: Array = []
 var active_enemies_south: Array = []
 var active_enemies_west: Array = []
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	new_game()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+func _process(delta: float) -> void:
+	if not get_tree().paused:
+		GameManager.add_time(delta)
+		update_timer_display()
 
 func game_over():
 	%NorthSpawnTimer.start()
@@ -23,6 +31,8 @@ func game_over():
 	%WestSpawnTimer.start()
 
 func new_game():
+	GameManager.reset_game_timer()
+	GameManager.reset_game_values()
 	%StartTimer.start()
 
 
@@ -120,3 +130,9 @@ func _on_enemy_reached_goal():
 				e.queue_free()
 
 	get_tree().change_scene_to_file("res://Scenes/Menu/restart_menu.tscn")
+	
+# Update Game Timer
+func update_timer_display():
+	var seconds = int(GameManager.get_elapsed_time()) % 60
+	var minutes = int(GameManager.get_elapsed_time()) / 60
+	game_timer_label.text = "%02d:%02d" % [minutes, seconds]

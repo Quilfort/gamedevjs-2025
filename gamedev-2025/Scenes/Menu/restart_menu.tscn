@@ -17,10 +17,13 @@ offset_bottom = 40.0
 [node name="RestartMenuLabel" type="RichTextLabel" parent="Control"]
 layout_mode = 0
 offset_left = 376.0
-offset_top = 250.0
+offset_top = 200.0
 offset_right = 776.0
-offset_bottom = 290.0
-text = "Restart?"
+offset_bottom = 300.0
+text = " \"Game over! , Your time is  get_final_time()
+
+\\n\\nRestart?\""
+fit_content = true
 
 [node name="RestartButton" type="Button" parent="Control"]
 layout_mode = 0
