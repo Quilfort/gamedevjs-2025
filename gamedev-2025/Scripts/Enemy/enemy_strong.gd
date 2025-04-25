@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends CharacterBody2D
 
 signal reached_goal
 
@@ -30,12 +30,12 @@ func set_health():
 func _physics_process(_delta):
 	if target_position != null:
 		var direction = (target_position - global_position).normalized()
-		linear_velocity = direction * movement_speed
-		update_animation(direction)
+		velocity = direction * movement_speed
+		move_and_slide()
+		update_animation(velocity.normalized())
 
-		# Check if reached target
 		if global_position.distance_to(target_position) < 10:
-			linear_velocity = Vector2.ZERO
+			velocity = Vector2.ZERO
 			emit_signal("reached_goal")
 			queue_free()
 

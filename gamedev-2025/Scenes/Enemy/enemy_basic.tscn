@@ -155,9 +155,8 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3fpc5"]
 
-[node name="EnemyBasic" type="RigidBody2D"]
+[node name="EnemyBasic" type="CharacterBody2D"]
 collision_mask = 0
-gravity_scale = 0.0
 script = ExtResource("1_2x1x7")
 exp_scene = ExtResource("3_tv5hi")
 

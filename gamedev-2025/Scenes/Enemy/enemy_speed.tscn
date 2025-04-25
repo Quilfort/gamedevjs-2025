@@ -155,15 +155,14 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0muol"]
 
-[node name="EnemySpeed" type="RigidBody2D"]
-gravity_scale = 0.0
+[node name="EnemySpeed" type="CharacterBody2D"]
 script = ExtResource("1_ar6xm")
 exp_scene = ExtResource("2_gg2ke")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b887j")
 animation = &"right"
-frame_progress = 0.124211
+frame_progress = 0.972401
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0muol")

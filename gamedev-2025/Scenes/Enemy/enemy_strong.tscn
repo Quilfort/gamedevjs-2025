@@ -155,9 +155,8 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hbsfh"]
 
-[node name="EnemyStrong" type="RigidBody2D"]
+[node name="EnemyStrong" type="CharacterBody2D"]
 scale = Vector2(2, 2)
-gravity_scale = 0.0
 script = ExtResource("1_fv0cr")
 exp_scene = ExtResource("2_5hkn0")
 

@@ -118,13 +118,22 @@ func choose_enemy() -> Node2D:
 			return enemy_speed_scene.instantiate()
 		else:
 			return enemy_scene.instantiate()
-	else:
-		# Late: 30% normal, 40% speed, 30% strong
+	elif time < 210:
+		# Mid: 35% normal, 40% speed, 25% strong
 		var roll = randf()
-		if roll < 0.3:
-			return enemy_scene.instantiate()
-		elif roll < 0.7:
-			return enemy_speed_scene.instantiate()
+		if roll < 0.35:
+			return enemy_scene.instantiate()  
+		elif roll < 0.75:
+			return enemy_speed_scene.instantiate() 
+		else:
+			return enemy_speed_strong.instantiate() 
+	else:
+		# Late: 20% normal, 40% speed, 40% strong
+		var roll = randf()
+		if roll < 0.2:
+			return enemy_scene.instantiate() 
+		elif roll < 0.6:
+			return enemy_speed_scene.instantiate()  
 		else:
 			return enemy_speed_strong.instantiate()
 
