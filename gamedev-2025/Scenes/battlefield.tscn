@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddsk8ae4ansxg"]
+[gd_scene load_steps=14 format=3 uid="uid://ddsk8ae4ansxg"]
 
 [ext_resource type="Script" path="res://Scripts/battlefield.gd" id="1_pgm47"]
 [ext_resource type="PackedScene" uid="uid://bpkhmw5hdmf38" path="res://Scenes/central_cube.tscn" id="1_tkkmv"]
@@ -32,6 +32,9 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1314, 24, 0, 0, 0, 0, 1291, 101, 0, 0, 0, 0, 1368, 212, 0, 0, 0, 0, 1313, 335, 0, 0, 0, 0, 1281, 463, 0, 0, 0, 0, 1349, 578)
 }
 point_count = 6
+
+[sub_resource type="Theme" id="Theme_wx364"]
+default_font_size = 40
 
 [node name="Battlefield" type="Node2D"]
 script = ExtResource("1_pgm47")
@@ -130,12 +133,13 @@ autoplay = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -100.0
+offset_left = -60.5
 offset_top = 20.0
-offset_right = 100.0
-offset_bottom = 60.0
+offset_right = 72.5
+offset_bottom = 73.0
 grow_horizontal = 2
-text = "GameTimer"
+theme = SubResource("Theme_wx364")
+text = "99:99"
 
 [connection signal="timeout" from="Main/StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="North/NorthSpawnTimer" to="." method="_on_north_spawn_timer_timeout"]

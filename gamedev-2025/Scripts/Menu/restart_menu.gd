@@ -22,7 +22,7 @@ func show_message():
 	var message = ""
 	
 	if final_time:
-		restart_menu_label.text = "Game over! Your time is " + get_final_time() + "\n\nRestart?"
+		restart_menu_label.text = "Siege failed! Your core endured for\n\n" + str(final_time) + "\n\nRestart?"
 	else:
 		restart_menu_label.text = "Game over!\n\nRestart?"
 		
