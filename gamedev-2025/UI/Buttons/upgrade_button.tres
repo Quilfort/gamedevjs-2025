@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bbh3agbbv8785"]
+
+[ext_resource type="Texture2D" uid="uid://cvgbpv7cuw4xk" path="res://UI/Buttons/Dummy@4x.png" id="1_ap7sb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_70588"]
+texture = ExtResource("1_ap7sb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_38p31"]
+texture = ExtResource("1_ap7sb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ppd67"]
+texture = ExtResource("1_ap7sb")
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxTexture_70588")
+Button/styles/normal = SubResource("StyleBoxTexture_38p31")
+Button/styles/pressed = SubResource("StyleBoxTexture_ppd67")

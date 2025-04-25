@@ -1,26 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://dunbp1pc5x1k8"]
+[gd_scene load_steps=8 format=3 uid="uid://dunbp1pc5x1k8"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/upgrade_menu.gd" id="1_s35tk"]
+[ext_resource type="Theme" uid="uid://bbh3agbbv8785" path="res://UI/Buttons/upgrade_button.tres" id="2_4pt3n"]
+[ext_resource type="Texture2D" uid="uid://c5gf8xg0i7un4" path="res://UI/Menu/NameBack.png" id="2_6jmae"]
+[ext_resource type="Texture2D" uid="uid://ctttg76266y1e" path="res://UI/Buttons/Arrow.png" id="3_aj61g"]
+[ext_resource type="Texture2D" uid="uid://cgtt1k2n8qkg7" path="res://UI/Buttons/Hourglass.png" id="4_ytepr"]
+[ext_resource type="AudioStream" uid="uid://fjd55vuu6sf3" path="res://Assets/Audio/Menu/LevelUp3.wav" id="5_lgago"]
+
+[sub_resource type="Theme" id="Theme_h5tix"]
+default_font_size = 30
 
 [node name="UpgradeMenu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_s35tk")
 
-[node name="PanelHeader" type="Panel" parent="."]
+[node name="PanelHeader" type="TextureRect" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -125.0
-offset_top = 20.0
-offset_right = 125.0
-offset_bottom = 70.0
+offset_left = -104.75
+offset_top = 10.0
+offset_right = 314.25
+offset_bottom = 151.0
 grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_6jmae")
 
 [node name="LabelHeader" type="RichTextLabel" parent="PanelHeader"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_right = 250.0
-offset_bottom = 50.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.5
+offset_top = -42.5
+offset_right = 179.5
+offset_bottom = 39.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_h5tix")
 text = "Choose a Power-up for Level %d"
 
 [node name="UpgradePowerNorth" type="Button" parent="."]
@@ -33,7 +53,39 @@ offset_top = 100.0
 offset_right = 40.0
 offset_bottom = 200.0
 grow_horizontal = 2
-text = "NORTH"
+theme = ExtResource("2_4pt3n")
+
+[node name="UpgradePowerNorthText" type="Label" parent="UpgradePowerNorth"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "North"
+horizontal_alignment = 1
+
+[node name="UpgradePowerNorthImage" type="TextureRect" parent="UpgradePowerNorth"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -30.0
+offset_right = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_aj61g")
 
 [node name="UpgradePowerEast" type="Button" parent="."]
 unique_name_in_owner = true
@@ -48,8 +100,39 @@ offset_right = -250.0
 offset_bottom = 50.0
 grow_horizontal = 0
 grow_vertical = 2
-text = "EAST
-"
+theme = ExtResource("2_4pt3n")
+
+[node name="UpgradePowerEastText" type="Label" parent="UpgradePowerEast"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "North"
+horizontal_alignment = 1
+
+[node name="UpgradePowerEastImage" type="TextureRect" parent="UpgradePowerEast"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -30.0
+offset_right = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_aj61g")
 
 [node name="UpgradePowerSouth" type="Button" parent="."]
 unique_name_in_owner = true
@@ -64,7 +147,39 @@ offset_right = 40.0
 offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "SOUTH"
+theme = ExtResource("2_4pt3n")
+
+[node name="UpgradePowerSouthText" type="Label" parent="UpgradePowerSouth"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "North"
+horizontal_alignment = 1
+
+[node name="UpgradePowerSouthImage" type="TextureRect" parent="UpgradePowerSouth"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -30.0
+offset_right = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_aj61g")
 
 [node name="UpgradePowerWest" type="Button" parent="."]
 unique_name_in_owner = true
@@ -76,7 +191,45 @@ offset_top = -50.0
 offset_right = 330.0
 offset_bottom = 50.0
 grow_vertical = 2
-text = "WEST"
+theme = ExtResource("2_4pt3n")
+
+[node name="UpgradePowerWestText" type="Label" parent="UpgradePowerWest"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "North"
+horizontal_alignment = 1
+
+[node name="UpgradePowerWestImage" type="TextureRect" parent="UpgradePowerWest"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -30.0
+offset_right = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ytepr")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="LevelUp" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_lgago")
+volume_db = -30.0
 
 [connection signal="pressed" from="UpgradePowerNorth" to="." method="_on_upgrade_power_north_pressed"]
 [connection signal="pressed" from="UpgradePowerEast" to="." method="_on_upgrade_power_east_pressed"]

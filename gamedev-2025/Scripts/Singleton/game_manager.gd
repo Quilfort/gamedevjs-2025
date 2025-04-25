@@ -55,6 +55,7 @@ func _add_upgrade_menu():
 func pause_game_for_upgrade():
 	get_tree().paused = true
 	if upgrade_menu:
+		upgrade_menu.play_upgrade_sound()
 		upgrade_menu.refresh_options()
 		upgrade_menu.visible = true
 

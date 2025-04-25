@@ -3,6 +3,14 @@ extends CanvasLayer
 const SPEED_UPGRADE_MULTIPLIER := 0.833
 const MIN_ATTACK_SPEED := 0.1
 
+
+#Sound
+@onready var level_up: AudioStreamPlayer = $Audio/LevelUp
+
+#Texture
+var attack_texture = preload("res://UI/Buttons/Arrow.png")
+var speed_texture = preload("res://UI/Buttons/Hourglass.png")
+
 var power_ups :=[
 	"attack",
 	"speed",
@@ -24,6 +32,7 @@ func refresh_options():
 	set_option("south")
 	set_option("west")
 	set_button_text()
+	set_button_texture()
 
 func set_option(direction: String):
 	var choice = power_ups.pick_random()
@@ -38,11 +47,20 @@ func set_option(direction: String):
 			option_west = choice
 
 func set_button_text():
-	%UpgradePowerNorth.text = option_north
-	%UpgradePowerEast.text = option_east
-	%UpgradePowerSouth.text = option_south
-	%UpgradePowerWest.text = option_west
+	%UpgradePowerNorthText.text = option_north
+	%UpgradePowerEastText.text = option_east
+	%UpgradePowerSouthText.text = option_south
+	%UpgradePowerWestText.text = option_west
 
+func set_button_texture():
+	_set_texture(%UpgradePowerNorthImage, option_north)
+	_set_texture(%UpgradePowerEastImage, option_east)
+	_set_texture(%UpgradePowerSouthImage, option_south)
+	_set_texture(%UpgradePowerWestImage, option_west)
+
+func _set_texture(texture_rect: TextureRect, option: String) -> void:
+	texture_rect.texture = attack_texture if option == "attack" else speed_texture
+		
 func _on_upgrade_power_north_pressed() -> void:
 	apply_upgrade("north", option_north)
 	finish_upgrade()
@@ -83,6 +101,11 @@ func apply_upgrade(direction: String, upgrade_type: String) -> void:
 
 func apply_speed_upgrade(current_speed: float) -> float:
 	return max(current_speed * SPEED_UPGRADE_MULTIPLIER, MIN_ATTACK_SPEED)
+
+func play_upgrade_sound():
+	level_up.play()
+	
+
 
 func finish_upgrade():
 	debug_log()
