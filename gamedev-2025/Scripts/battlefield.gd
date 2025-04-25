@@ -3,6 +3,7 @@ extends Node2D
 
 #Audio
 @onready var background_music: AudioStreamPlayer = $Audio/BackgroundMusic
+@onready var game_over_music: AudioStreamPlayer = $Audio/GameOverMusic
 
 #Enemy Instances
 @export var enemy_scene: PackedScene
@@ -153,6 +154,8 @@ func set_spawn_timers():
 	%EastSpawnTimer.wait_time = GameManager.enemy_spawn_speed_east
 	%WestSpawnTimer.wait_time = GameManager.enemy_spawn_speed_west
 
+
+# Game Over
 func _on_enemy_reached_goal():
 	%NorthSpawnTimer.stop()
 	%SouthSpawnTimer.stop()
@@ -163,7 +166,8 @@ func _on_enemy_reached_goal():
 		for e in group:
 			if is_instance_valid(e):
 				e.queue_free()
-
+	game_over_music.play()
+	await game_over_music.finished
 	get_tree().change_scene_to_file("res://Scenes/Menu/restart_menu.tscn")
 	
 # Update Game Timer

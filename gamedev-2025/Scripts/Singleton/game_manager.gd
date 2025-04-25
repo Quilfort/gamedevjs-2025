@@ -118,7 +118,7 @@ func play_power_up_sound():
 	var player = AudioStreamPlayer.new()
 	player.stream = load("res://Assets/Audio/Experience/PowerUp1.wav")
 	player.bus = "Master" 
-	player.volume_db = -10.0
+	player.volume_db = -20.0
 	get_tree().root.add_child(player)
 	player.play()
 	await get_tree().create_timer(player.stream.get_length()).timeout
@@ -134,7 +134,7 @@ func add_time(delta: float):
 		enemy_time_level_tracker = current_half_minutes
 		print("Enemy time-based level up at 30s mark #%d" % current_half_minutes)
 		level_up_enemy()
-		#Extra event
+		level_up_enemy()
 		level_up_enemy()
 
 func get_elapsed_time() -> float:

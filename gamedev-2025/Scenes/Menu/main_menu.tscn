@@ -63,9 +63,11 @@ text = "Exit"
 
 [node name="AcceptSFX" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("2_dh5ra")
+volume_db = -20.0
 
 [node name="ExitSFX" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_8kwf0")
+volume_db = -20.0
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("4_bkn8n")

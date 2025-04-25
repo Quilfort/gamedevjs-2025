@@ -14,6 +14,7 @@ var background_image_path = "res://Assets/Menu/background_restart_menu.png"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	%MenuBackground.set_background(background_image_path)
+	await get_tree().create_timer(1.0).timeout
 	background_music.play()
 	show_message() 
 

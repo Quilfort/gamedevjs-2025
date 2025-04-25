@@ -77,13 +77,15 @@ text = "Core Siege"
 
 [node name="AcceptSFX" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("2_2k7ke")
+volume_db = -20.0
 
 [node name="ExitSFX" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_6ch2q")
+volume_db = -20.0
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("4_pwwco")
-volume_db = -20.0
+volume_db = -30.0
 
 [connection signal="pressed" from="Control/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Control/ExitButton" to="." method="_on_exit_button_pressed"]

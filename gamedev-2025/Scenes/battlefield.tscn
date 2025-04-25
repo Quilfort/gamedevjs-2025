@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ddsk8ae4ansxg"]
+[gd_scene load_steps=15 format=3 uid="uid://ddsk8ae4ansxg"]
 
 [ext_resource type="Script" path="res://Scripts/battlefield.gd" id="1_pgm47"]
 [ext_resource type="PackedScene" uid="uid://bpkhmw5hdmf38" path="res://Scenes/central_cube.tscn" id="1_tkkmv"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://coie1aygnfdx3" path="res://Scenes/ui.tscn" id="4_l0cx7"]
 [ext_resource type="PackedScene" uid="uid://c03464lxoh4hp" path="res://Scenes/Enemy/enemy_strong.tscn" id="4_nrcd4"]
 [ext_resource type="AudioStream" uid="uid://dw31o0e48joux" path="res://Assets/Audio/Battlefield/17 - Fight.ogg" id="6_6pkog"]
+[ext_resource type="AudioStream" uid="uid://ca4ov3qp8t8av" path="res://Assets/Audio/Battlefield/GameOver3.wav" id="9_o45ay"]
 
 [sub_resource type="Curve2D" id="Curve2D_y1b60"]
 _data = {
@@ -126,6 +127,10 @@ rotation = 1.86106
 stream = ExtResource("6_6pkog")
 volume_db = -25.0
 autoplay = true
+
+[node name="GameOverMusic" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("9_o45ay")
+volume_db = -15.0
 
 [node name="GameTimer" type="Node" parent="."]
 
