@@ -61,6 +61,7 @@ func _on_upgrade_power_west_pressed() -> void:
 	finish_upgrade()
 
 func apply_upgrade(direction: String, upgrade_type: String) -> void:
+	print(direction, upgrade_type)
 	match upgrade_type:
 		"attack":
 			match direction:
@@ -74,6 +75,11 @@ func apply_upgrade(direction: String, upgrade_type: String) -> void:
 				"east": GameManager.tower_attack_speed_east = apply_speed_upgrade(GameManager.tower_attack_speed_east)
 				"south": GameManager.tower_attack_speed_south = apply_speed_upgrade(GameManager.tower_attack_speed_south)
 				"west": GameManager.tower_attack_speed_west = apply_speed_upgrade(GameManager.tower_attack_speed_west)
+		
+	print(GameManager.tower_attack_north)
+	print(GameManager.tower_attack_east)
+	print(GameManager.tower_attack_south)
+	print(GameManager.tower_attack_west)
 
 func apply_speed_upgrade(current_speed: float) -> float:
 	return max(current_speed * SPEED_UPGRADE_MULTIPLIER, MIN_ATTACK_SPEED)

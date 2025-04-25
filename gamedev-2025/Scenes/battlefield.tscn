@@ -41,7 +41,7 @@ enemy_scene = ExtResource("2_12ow2")
 
 [node name="StartTimer" type="Timer" parent="Main"]
 unique_name_in_owner = true
-wait_time = 0.5
+wait_time = 0.1
 one_shot = true
 
 [node name="Middle" type="Node" parent="."]

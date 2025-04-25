@@ -11,11 +11,11 @@ var exp_to_next_level := 10.0
 var exp_growth_factor := 1.3
 
 #Tower Attack
-var tower_attack_init: int = 0.01
-var tower_attack_north: int = tower_attack_init
-var tower_attack_east:int  = tower_attack_init
-var tower_attack_south:int  = tower_attack_init
-var tower_attack_west:int = tower_attack_init
+var tower_attack_init: float = 1
+var tower_attack_north: float = tower_attack_init
+var tower_attack_east:float  = tower_attack_init
+var tower_attack_south:float  = tower_attack_init
+var tower_attack_west:float = tower_attack_init
 
 # Attack speed (lower = faster shooting)
 var tower_attack_speed_init := 1.0
@@ -25,8 +25,9 @@ var tower_attack_speed_south := tower_attack_speed_init
 var tower_attack_speed_west := tower_attack_speed_init
 
 # Enemy / Computer
+var enemy_time_level_tracker := 0
 const ENEMY_SPEED_UPGRADE_MULTIPLIER := 0.9 
-var enemy_spawn_speed_init := 5.0
+var enemy_spawn_speed_init := 4.5
 var enemy_spawn_speed_north := enemy_spawn_speed_init 
 var enemy_spawn_speed_east := enemy_spawn_speed_init 
 var enemy_spawn_speed_south := enemy_spawn_speed_init 
@@ -126,6 +127,15 @@ func play_power_up_sound():
 func add_time(delta: float):
 	elapsed_time += delta
 
+	var current_half_minutes  = int(elapsed_time) / 30
+
+	if current_half_minutes > enemy_time_level_tracker:
+		enemy_time_level_tracker = current_half_minutes
+		print("Enemy time-based level up at 30s mark #%d" % current_half_minutes)
+		level_up_enemy()
+		#Extra event
+		level_up_enemy()
+
 func get_elapsed_time() -> float:
 	return elapsed_time
 
@@ -139,7 +149,7 @@ func reset_game_values():
 	# Experience
 	current_level = 1
 	current_exp = 0.0
-	exp_to_next_level = 5.0
+	exp_to_next_level = 10.0
 	exp_growth_factor = 1.3
 	#Tower Attack
 	tower_attack_north = tower_attack_init
@@ -152,6 +162,7 @@ func reset_game_values():
 	tower_attack_speed_south = tower_attack_speed_init
 	tower_attack_speed_west = tower_attack_speed_init
 	# Enemy / Computer
+	enemy_time_level_tracker = 0
 	enemy_spawn_speed_north = enemy_spawn_speed_init 
 	enemy_spawn_speed_east = enemy_spawn_speed_init 
 	enemy_spawn_speed_south = enemy_spawn_speed_init 
