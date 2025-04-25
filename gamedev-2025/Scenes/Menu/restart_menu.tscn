@@ -1,12 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://ljqvaci3urer"]
+[gd_scene load_steps=6 format=3 uid="uid://ljqvaci3urer"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/restart_menu.gd" id="1_3tovp"]
 [ext_resource type="AudioStream" uid="uid://bynolohxmuo3v" path="res://Assets/Audio/Menu/Accept9.wav" id="2_2k7ke"]
+[ext_resource type="PackedScene" uid="uid://b22uqugedlgpo" path="res://Scenes/Menu/menu_background.tscn" id="2_ba64g"]
 [ext_resource type="AudioStream" uid="uid://bjb46h286fl4r" path="res://Assets/Audio/Menu/Cancel2.wav" id="3_6ch2q"]
 [ext_resource type="AudioStream" uid="uid://b6wqhx2sc24q4" path="res://Assets/Audio/Menu/7 - Sad Theme.ogg" id="4_pwwco"]
 
 [node name="RestartMenu" type="Node2D"]
 script = ExtResource("1_3tovp")
+
+[node name="MenuBackground" parent="." instance=ExtResource("2_ba64g")]
+unique_name_in_owner = true
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://b22uqugedlgpo"]
+
+[ext_resource type="Script" path="res://Scripts/Menu/menu_background.gd" id="1_1q4g4"]
+
+[node name="MenuBackground" type="Node2D"]
+script = ExtResource("1_1q4g4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2

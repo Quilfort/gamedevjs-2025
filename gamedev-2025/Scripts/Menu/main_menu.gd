@@ -1,11 +1,16 @@
 extends Node2D
 
+#Background Image
+var background_image_path = "res://Assets/Menu/background_main_menu.png"
+
+#Audio
 @onready var accept_sfx: AudioStreamPlayer = $Audio/AcceptSFX
 @onready var exit_sfx: AudioStreamPlayer = $Audio/ExitSFX
 @onready var background_music: AudioStreamPlayer = $Audio/BackgroundMusic
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	%MenuBackground.set_background(background_image_path)
 	background_music.play()
 
 
